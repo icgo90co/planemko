@@ -63,7 +63,7 @@ x-app-env: &app-env
 
 services:
   web:
-    container_name: web
+    container_name: plane-web
     build:
       context: .
       dockerfile: ./apps/web/Dockerfile.web
@@ -74,7 +74,7 @@ services:
       - api
 
   admin:
-    container_name: admin
+    container_name: plane-admin
     build:
       context: .
       dockerfile: ./apps/admin/Dockerfile.admin
@@ -86,7 +86,7 @@ services:
       - web
 
   space:
-    container_name: space
+    container_name: plane-space
     build:
       context: .
       dockerfile: ./apps/space/Dockerfile.space
@@ -98,7 +98,7 @@ services:
       - web
 
   api:
-    container_name: api
+    container_name: plane-api
     build:
       context: ./apps/api
       dockerfile: Dockerfile.api
@@ -113,7 +113,7 @@ services:
       - plane-redis
 
   worker:
-    container_name: bgworker
+    container_name: plane-worker
     build:
       context: ./apps/api
       dockerfile: Dockerfile.api
@@ -129,7 +129,7 @@ services:
       - plane-redis
 
   beat-worker:
-    container_name: beatworker
+    container_name: plane-beat-worker
     build:
       context: ./apps/api
       dockerfile: Dockerfile.api
@@ -218,7 +218,7 @@ services:
 
   # Comment this if you already have a reverse proxy running
   proxy:
-    container_name: proxy
+    container_name: plane-proxy
     build:
       context: ./apps/proxy
       dockerfile: Dockerfile.ce
